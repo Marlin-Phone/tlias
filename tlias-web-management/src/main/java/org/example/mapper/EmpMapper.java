@@ -12,10 +12,14 @@ import java.util.List;
 @Mapper
 public interface EmpMapper {
 
-    @Select("SELECT count(*) from emp e left join dept d on e.dept_id = d.id;")
-    public Long count();
+//    ----------------------- 原始分页查询实现 ------------------------------
 
-    @Select("select e.*, d.name deptName from emp as e left join dept as d on e.dept_id = d.id limit #{start}, #{pageSize}")
-    public List<Emp> list(Integer start , Integer pageSize);
+//    @Select("SELECT count(*) from emp e left join dept d on e.dept_id = d.id;")
+//    public Long count();
+//
+//    @Select("select e.*, d.name deptName from emp as e left join dept as d on e.dept_id = d.id limit #{start}, #{pageSize}")
+//    public List<Emp> list(Integer start , Integer pageSize);
 
+    @Select("select e.*, d.name deptName from emp as e left join dept as d on e.dept_id = d.id order by e.update_time desc")
+    public List<Emp> list();
 }

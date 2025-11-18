@@ -6089,3 +6089,6 @@ java.lang.NullPointerException: Cannot invoke "java.lang.Integer.intValue()" bec
 2025-11-18 21:01:50.166 [RMI TCP Connection(1)-192.168.43.254] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
 2025-11-18 21:01:50.246 [http-nio-8080-exec-1] INFO  o.example.controller.EmpController - 查询所有员工信息1,5
 2025-11-18 21:02:09.777 [http-nio-8080-exec-3] INFO  o.example.controller.EmpController - 查询所有员工信息1,10
+2025-11-18 23:33:22.043 [HikariPool-1:housekeeper] WARN  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=1h4m376ms455µs100ns).
+2025-11-18 23:34:31.266 [http-nio-8080-exec-5] INFO  o.example.controller.EmpController - 查询所有员工信息1,10
+2025-11-18 23:34:31.266 [http-nio-8080-exec-6] INFO  o.example.controller.DeptController - 查询全部部门数据
