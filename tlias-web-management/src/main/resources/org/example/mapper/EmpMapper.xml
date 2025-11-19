@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.example.mapper.EmpMapper">
+
+    <!--
+        动态查询：
+        - 支持 name 模糊查询（当 name 非空时）
+        - 支持 gender 过滤（当 gender 非空时）
+        - 支持 entry_date 范围筛选（当 begin/end 非空时）
+        - 左连接 dept 并把 d.name 映射到 emp.pojo 的 deptName 字段
+    -->
+    <select id="list" resultType="org.example.pojo.Emp" parameterType="map">
+        -- 动态sql
+        SELECT e.*, d.name AS deptName
+        FROM emp e
+            LEFT JOIN dept d ON e.dept_id = d.id
+        <where> -- 动态条件拼接（自动处理 AND/OR 连接）
+            <if test="name != null and name != ''">
+                AND e.name LIKE CONCAT('%', #{name}, '%')
+            </if>
+            <if test="gender != null">
+                AND e.gender = #{gender}
+            </if>
+            <if test="begin != null">
+                AND e.entry_date &gt;= #{begin}
+            </if>
+            <if test="end != null">
+                AND e.entry_date &lt;= #{end}
+            </if>
+        </where>
+        ORDER BY e.update_time DESC
+    </select>
+
+</mapper>
+
