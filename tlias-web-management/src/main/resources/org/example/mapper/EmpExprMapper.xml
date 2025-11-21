@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.example.mapper.EmpExprMapper">
+
+<!--
+    批量保存雇员工作经历
+    foreach 标签用于遍历集合并生成多条插入语句
+        collection：要遍历的集合名称
+        item：表示集合中每个元素的变量名
+        separator：每条记录之间的分隔符（这里是逗号）
+-->
+
+    <insert id="insertBatch" parameterType="java.util.List">
+        INSERT INTO emp_expr(emp_id, `begin`, `end`, company, job)
+        VALUES
+        <foreach collection="list" item="expr" separator=",">
+            (#{expr.empId}, #{expr.begin}, #{expr.end}, #{expr.company}, #{expr.job})
+        </foreach>
+    </insert>
+</mapper>
