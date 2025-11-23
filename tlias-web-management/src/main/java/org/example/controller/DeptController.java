@@ -9,12 +9,12 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@Slf4j
-@RequestMapping("/depts")
-@RestController
+@Slf4j  // 自动生成日志对象log，这样就可以直接使用log.info()等方法记录日志
+@RequestMapping("/depts")   // 定义处理的请求路径和处理方式
+@RestController // 标识这是一个控制器类，返回JSON格式的数据
 public class DeptController {
 
-    @Autowired
+    @Autowired // 自动注入DeptService依赖
     private DeptService deptService;
 
 //    查询部门
