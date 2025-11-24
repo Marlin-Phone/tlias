@@ -2,6 +2,10 @@ package org.example.pojo;
 
 import lombok.Data;
 
+/**
+ * 统一结果返回类
+ * @Data 注解会自动生成getter/setter/toString等方法
+ */
 @Data
 public class Result {
     private Integer code;
@@ -12,7 +16,7 @@ public class Result {
         Result result = new Result();
         result.code = 1;
         result.msg = "success";
-         return result;
+        return result;
     }
 
     public static Result success(Object object){
@@ -24,7 +28,7 @@ public class Result {
     }
 
     public static Result error(String msg){
-        Result  result = new Result();
+        Result result = new Result();
         result.code = 0;
         result.msg = msg;
         return result;

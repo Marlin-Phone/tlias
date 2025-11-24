@@ -11,7 +11,6 @@ public interface EmpService {
      * @param empQueryParam     当前页
      * @return 员工分页结果
      */
-//    PageResult<Emp> page(Integer page, Integer pageSize, String name, Integer gender, LocalDate begin, LocalDate end);
     PageResult<Emp> page(EmpQueryParam empQueryParam);
 
     void save(Emp emp);

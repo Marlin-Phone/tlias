@@ -15,7 +15,7 @@ public interface DeptMapper {
     })
     // 查询所有的部门数据
     @Select("SELECT id, name, create_time, update_time FROM dept ORDER BY update_time DESC")
-    public List<Dept> findAll();
+    List<Dept> findAll();
 
     @Delete("DELETE FROM dept WHERE id = #{id}")
     void deleteById(Integer id);

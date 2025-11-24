@@ -7,8 +7,6 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDate;
 
-//@AllArgsConstructor
-//@NoArgsConstructor
 @Data
 public class EmpQueryParam {
     private Integer page = 1;

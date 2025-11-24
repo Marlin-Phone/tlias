@@ -1,6 +1,5 @@
 package org.example.service;
 
-import org.apache.ibatis.annotations.Select;
 import org.example.pojo.Dept;
 import org.springframework.stereotype.Service;
 
