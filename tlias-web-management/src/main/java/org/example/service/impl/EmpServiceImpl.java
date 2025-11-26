@@ -87,4 +87,8 @@ public class EmpServiceImpl implements EmpService {
         empLogService.insertLog(empLog);
         }
     }
+
+    public Emp getInfo(Integer id){
+        return empMapper.getById(id);
+    }
 }

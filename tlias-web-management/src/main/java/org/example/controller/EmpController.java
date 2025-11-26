@@ -41,4 +41,14 @@ public class EmpController {
         return Result.success();
     }
 
+//    查询回显
+    @GetMapping("/{id}")
+    public Result getById(@PathVariable Integer id){
+        log.info("根据ID查询员工信息: {}", id);
+        Emp emp = empService.getInfo(id);
+        return Result.success(emp);
+    }
+
+//    修改员工信息
+
 }

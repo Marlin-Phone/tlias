@@ -33,4 +33,7 @@ public interface EmpMapper {
 
     // 使用注解方式实现批量删除
     void deleteByIds(List<Integer> ids);
+
+    // 根据ID查询员工工作经历，XML实现
+    Emp getById(Integer id);
 }
