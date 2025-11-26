@@ -9,6 +9,8 @@ import org.example.service.EmpService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @Slf4j // 记录日志
 @RequestMapping("/emps")
@@ -30,4 +32,13 @@ public class EmpController {
         empService.save(emp);
         return Result.success();
     }
+
+//    删除多个员工信息
+    @DeleteMapping
+    public Result delete(@RequestParam List<Integer> ids){
+        log.info("删除员工信息: {}", ids);
+        empService.delete(ids);
+        return Result.success();
+    }
+
 }

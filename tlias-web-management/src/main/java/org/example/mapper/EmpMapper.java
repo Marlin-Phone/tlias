@@ -2,11 +2,9 @@ package org.example.mapper;
 
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Select;
 import org.example.pojo.Emp;
 import org.example.pojo.EmpQueryParam;
 
-import java.time.LocalDate;
 import java.util.List;
 
 /**
@@ -32,4 +30,7 @@ public interface EmpMapper {
     @Insert("insert into emp(username, name, gender, phone, job, salary, image, entry_date, dept_id, create_time, update_time) values" +
             "(#{username}, #{name}, #{gender}, #{phone}, #{job}, #{salary}, #{image}, #{entryDate}, #{deptId}, #{createTime}, #{updateTime})")
     void insert(Emp emp);
+
+    // 使用注解方式实现批量删除
+    void deleteByIds(List<Integer> ids);
 }

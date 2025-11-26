@@ -17,4 +17,13 @@ public interface EmpExprMapper {
      */
     // 使用XML方式实现批量插入，在src/main/resources/org/example/mapper/EmpExprMapper.xml下实现
     void insertBatch(List<EmpExpr> exprList);
+
+    /**
+     * 根据员工ID删除对应的工作经历
+     * @param empIds   员工ID列表
+     */
+    // 批量删除用XML实现，不用注解
+    void deleteByEmpIds(List<Integer> empIds);
+
+
 }

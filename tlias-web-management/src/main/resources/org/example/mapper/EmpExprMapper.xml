@@ -19,4 +19,17 @@
             (#{expr.empId}, #{expr.begin}, #{expr.end}, #{expr.company}, #{expr.job})
         </foreach>
     </insert>
+
+    <!--
+        批量删除雇员工作经历
+        使用 foreach 标签遍历 empIds 集合，实现批量删除
+    -->
+
+    <delete id="deleteByEmpIds" parameterType="java.util.List">
+        DELETE FROM emp_expr WHERE emp_id IN
+        <foreach collection="empIds" item="empId" open="(" separator="," close=")">
+            #{empId}
+        </foreach>
+    </delete>
+
 </mapper>

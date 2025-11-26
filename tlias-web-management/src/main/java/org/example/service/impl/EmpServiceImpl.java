@@ -3,7 +3,6 @@ package org.example.service.impl;
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
 import org.example.mapper.EmpExprMapper;
-import org.example.mapper.EmpLogMapper;
 import org.example.mapper.EmpMapper;
 import org.example.pojo.*;
 import org.example.service.EmpLogService;
@@ -72,6 +71,20 @@ public class EmpServiceImpl implements EmpService {
             // 记录操作日志
             EmpLog empLog = new EmpLog(null, LocalDateTime.now(), "新增员工" + emp);
             empLogService.insertLog(empLog);
+        }
+    }
+
+    @Transactional(rollbackFor = Exception.class)
+    public void delete(List<Integer> ids){
+    try{
+        // 1. 删除员工的工作经历信息
+        empExprMapper.deleteByEmpIds(ids);
+        // 2. 删除员工的基本信息
+        empMapper.deleteByIds(ids);
+    } finally {
+        // 3. 记录操作日志
+        EmpLog empLog = new EmpLog(null, LocalDateTime.now(), "删除员工ID列表" + ids);
+        empLogService.insertLog(empLog);
         }
     }
 }
