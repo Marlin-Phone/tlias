@@ -38,4 +38,9 @@ public interface EmpMapper {
 
     // 根据ID查询员工工作经历，XML实现
     Emp getById(Integer id);
+
+//    @Update("update emp set username=#{username}, name=#{name}, gender=#{gender}, phone=#{phone}, job=#{job}, salary=#{salary}, image=#{image}, " +
+//            "entry_date=#{entryDate}, dept_id=#{deptId}, update_time=#{updateTime} where id=#{id}")
+//    以上SQL可扩展性差，不能动态更新字段，改为XML实现
+    void update(Emp emp);
 }
