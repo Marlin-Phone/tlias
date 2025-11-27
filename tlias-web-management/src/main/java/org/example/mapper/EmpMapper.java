@@ -1,12 +1,14 @@
 package org.example.mapper;
 
 import org.apache.ibatis.annotations.Insert;
+import org.apache.ibatis.annotations.MapKey;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Options;
 import org.example.pojo.Emp;
 import org.example.pojo.EmpQueryParam;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * 员工Mapper接口
@@ -43,4 +45,10 @@ public interface EmpMapper {
 //            "entry_date=#{entryDate}, dept_id=#{deptId}, update_time=#{updateTime} where id=#{id}")
 //    以上SQL可扩展性差，不能动态更新字段，改为XML实现
     void update(Emp emp);
+
+    /**
+     * 统计员工职位人数
+     */
+    @MapKey("pos")
+    List<Map<String, Object>> countEmpJobData();
 }
