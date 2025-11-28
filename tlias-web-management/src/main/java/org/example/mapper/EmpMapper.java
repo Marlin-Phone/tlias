@@ -1,9 +1,6 @@
 package org.example.mapper;
 
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.MapKey;
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Options;
+import org.apache.ibatis.annotations.*;
 import org.example.pojo.Emp;
 import org.example.pojo.EmpQueryParam;
 
@@ -54,4 +51,7 @@ public interface EmpMapper {
 
     @MapKey("name")
     List<Map<String, Object>> countEmpGenderData();
+
+    @Select("select * from emp")
+    List<Emp> listAll();
 }
