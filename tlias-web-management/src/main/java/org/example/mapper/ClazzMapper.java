@@ -47,4 +47,7 @@ public interface ClazzMapper {
             "end_date = #{endDate}, master_id = #{masterId}, subject = #{subject}, update_time = #{updateTime} " +
             "where id = #{id}")
     void update(Clazz clazz);
+
+    @Select("select * from clazz")
+    List<Clazz> selectAll();
 }

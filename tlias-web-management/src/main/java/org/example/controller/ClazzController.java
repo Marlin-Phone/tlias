@@ -6,6 +6,8 @@ import org.example.service.ClazzService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @Slf4j
 @RestController
 @RequestMapping("/clazzs")
@@ -47,5 +49,12 @@ public class ClazzController {
         log.info("修改班级信息: {}", clazz);
         clazzService.update(clazz);
         return Result.success();
+    }
+
+    @GetMapping("/list")
+    public Result selectAll(){
+        log.info("查询所有班级信息");
+        List<Clazz> clazzList =  clazzService.selectAll();
+        return Result.success(clazzList);
     }
 }

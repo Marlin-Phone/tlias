@@ -53,4 +53,9 @@ public class ClazzServiceImpl implements ClazzService {
         clazz.setUpdateTime(LocalDateTime.now());
         clazzMapper.update(clazz);
     }
+
+    @Override
+    public List<Clazz> selectAll() {
+        return clazzMapper.selectAll();
+    }
 }
