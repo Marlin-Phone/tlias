@@ -1,9 +1,6 @@
 package org.example.mapper;
 
-import org.apache.ibatis.annotations.Delete;
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Result;
-import org.apache.ibatis.annotations.Results;
+import org.apache.ibatis.annotations.*;
 import org.example.pojo.Clazz;
 import org.example.pojo.ClazzQueryParam;
 
@@ -38,4 +35,8 @@ public interface ClazzMapper {
 
     @Delete("delete from clazz where id = #{id}")
     void delete(int id);
+
+    @Insert("insert into clazz(name, room, begin_date, end_date, master_id, subject, update_time) values" +
+            "(#{name}, #{room}, #{beginDate}, #{endDate}, #{masterId}, #{subject}, #{updateTime})")
+    void add(Clazz clazz);
 }

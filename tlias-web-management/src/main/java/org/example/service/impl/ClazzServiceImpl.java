@@ -10,6 +10,7 @@ import org.example.service.ClazzService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Service
@@ -34,5 +35,11 @@ public class ClazzServiceImpl implements ClazzService {
     @Override
     public void delete(int id) {
         clazzMapper.delete(id);
+    }
+
+    @Override
+    public void add(Clazz clazz) {
+        clazz.setUpdateTime(LocalDateTime.now());
+        clazzMapper.add(clazz);
     }
 }

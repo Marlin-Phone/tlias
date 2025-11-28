@@ -8,4 +8,6 @@ public interface ClazzService {
     PageResult<Clazz> findAll(ClazzQueryParam clazzQueryParam);
 
     void delete(int id);
+
+    void add(Clazz clazz);
 }
