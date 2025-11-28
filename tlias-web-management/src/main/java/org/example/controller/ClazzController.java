@@ -41,4 +41,11 @@ public class ClazzController {
         Clazz clazz = clazzService.selectById(id);
         return Result.success(clazz);
     }
+
+    @PutMapping
+    public Result update(@RequestBody Clazz clazz){
+        log.info("修改班级信息: {}", clazz);
+        clazzService.update(clazz);
+        return Result.success();
+    }
 }

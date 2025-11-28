@@ -12,4 +12,6 @@ public interface ClazzService {
     void add(Clazz clazz);
 
     Clazz selectById(int id);
+
+    void update(Clazz clazz);
 }

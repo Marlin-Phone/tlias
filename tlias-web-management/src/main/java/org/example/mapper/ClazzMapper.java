@@ -42,4 +42,9 @@ public interface ClazzMapper {
 
     @Select("select * from clazz where id = #{id}")
     Clazz selectById(int id);
+
+    @Update("update clazz set name = #{name}, room = #{room}, begin_date = #{beginDate}, " +
+            "end_date = #{endDate}, master_id = #{masterId}, subject = #{subject}, update_time = #{updateTime} " +
+            "where id = #{id}")
+    void update(Clazz clazz);
 }
