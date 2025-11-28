@@ -39,4 +39,7 @@ public interface ClazzMapper {
     @Insert("insert into clazz(name, room, begin_date, end_date, master_id, subject, update_time) values" +
             "(#{name}, #{room}, #{beginDate}, #{endDate}, #{masterId}, #{subject}, #{updateTime})")
     void add(Clazz clazz);
+
+    @Select("select * from clazz where id = #{id}")
+    Clazz selectById(int id);
 }

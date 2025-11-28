@@ -10,4 +10,6 @@ public interface ClazzService {
     void delete(int id);
 
     void add(Clazz clazz);
+
+    Clazz selectById(int id);
 }

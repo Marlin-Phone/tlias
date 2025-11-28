@@ -34,4 +34,11 @@ public class ClazzController {
         clazzService.add(clazz);
         return Result.success();
     }
+
+    @GetMapping("/{id}")
+    public Result selectById(@PathVariable int id){
+        log.info("根据id查询班级信息: {}", id);
+        Clazz clazz = clazzService.selectById(id);
+        return Result.success(clazz);
+    }
 }
