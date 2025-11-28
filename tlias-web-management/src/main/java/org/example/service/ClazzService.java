@@ -6,4 +6,6 @@ import org.example.pojo.PageResult;
 
 public interface ClazzService {
     PageResult<Clazz> findAll(ClazzQueryParam clazzQueryParam);
+
+    void delete(int id);
 }

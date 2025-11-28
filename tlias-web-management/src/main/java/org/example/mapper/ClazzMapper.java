@@ -1,5 +1,6 @@
 package org.example.mapper;
 
+import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Result;
 import org.apache.ibatis.annotations.Results;
@@ -34,4 +35,7 @@ public interface ClazzMapper {
 //            "from clazz c\n" +
 //            "left join emp e on c.master_id = e.id;")
     List<Clazz> list(ClazzQueryParam clazzQueryParam);
+
+    @Delete("delete from clazz where id = #{id}")
+    void delete(int id);
 }

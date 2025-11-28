@@ -4,9 +4,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.example.pojo.*;
 import org.example.service.ClazzService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @Slf4j
 @RestController
@@ -21,5 +19,12 @@ public class ClazzController {
         log.info("查询全部班级数据{}", clazzQueryParam);
         PageResult<Clazz> clazzPageResult = clazzService.findAll(clazzQueryParam);
         return Result.success(clazzPageResult);
+    }
+
+    @DeleteMapping("/{id}")
+    public Result delete(@PathVariable int id){
+        log.info("删除班级信息: {}", id);
+        clazzService.delete(id);
+        return Result.success();
     }
 }

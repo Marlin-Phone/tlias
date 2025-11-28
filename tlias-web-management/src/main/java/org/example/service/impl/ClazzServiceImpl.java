@@ -30,4 +30,9 @@ public class ClazzServiceImpl implements ClazzService {
         Page<Clazz> p = (Page<Clazz>) clazzList;
         return new PageResult<Clazz>(p.getTotal(), p.getResult());
     }
+
+    @Override
+    public void delete(int id) {
+        clazzMapper.delete(id);
+    }
 }
