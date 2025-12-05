@@ -45,4 +45,11 @@ public interface StudentMapper {
             "update_time = #{updateTime} " +
             "where id = #{id}")
     void update(Student student);
+
+    @Update("update student set " +
+            "violation_score = #{violationScore}, " +
+            "violation_count = #{violationCount}, " +
+            "update_time = #{updateTime} " +
+            "where id = #{id}")
+    void updateScore(Student student);
 }

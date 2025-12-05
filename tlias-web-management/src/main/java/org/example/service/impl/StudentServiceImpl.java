@@ -55,4 +55,12 @@ public class StudentServiceImpl implements StudentService {
         studentMapper.update(student);
     }
 
+    @Override
+    public void updateScore(Student student, int score) {
+        student.setUpdateTime(LocalDateTime.now());
+        student.setViolationCount((short) (student.getViolationCount() + 1));
+        student.setViolationScore((short) (student.getViolationScore() + score));
+        studentMapper.updateScore(student);
+    }
+
 }
