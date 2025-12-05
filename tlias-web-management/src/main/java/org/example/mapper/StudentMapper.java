@@ -15,4 +15,6 @@ public interface StudentMapper {
             "         left join clazz c on s.clazz_id = c.id " +
             "order by update_time desc")
     List<Student> list(StudentQueryParam studentQueryParam);
+
+    void delete(List<Integer> ids);
 }
