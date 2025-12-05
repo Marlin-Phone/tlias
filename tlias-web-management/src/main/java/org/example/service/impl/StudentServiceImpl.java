@@ -10,6 +10,7 @@ import org.example.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Service
@@ -34,6 +35,13 @@ public class StudentServiceImpl implements StudentService {
     @Override
     public void delete(List<Integer> ids) {
         studentMapper.delete(ids);
+    }
+
+    @Override
+    public void add(Student student) {
+        student.setCreateTime(LocalDateTime.now());
+        student.setUpdateTime(LocalDateTime.now());
+        studentMapper.add(student);
     }
 
 }

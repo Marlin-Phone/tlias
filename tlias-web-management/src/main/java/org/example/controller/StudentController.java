@@ -30,4 +30,10 @@ public class StudentController {
         return Result.success();
     }
 
+    @PostMapping
+    public Result add(@RequestBody Student student){
+        log.info("新增学生信息{}", student);
+         studentService.add(student);
+        return Result.success();
+    }
 }
