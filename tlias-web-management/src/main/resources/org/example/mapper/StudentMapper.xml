@@ -9,4 +9,24 @@
             #{id}
         </foreach>
     </delete>
+
+    <select id="list" resultType="org.example.pojo.Student">
+        <!-- 动态sql -->
+        SELECT s.*, c.name as clazz_name
+        FROM student s
+        LEFT JOIN clazz c ON s.clazz_id = c.id
+        <where>
+            <!-- 动态条件拼接（自动处理 AND/OR 连接） -->
+            <if test="name != null and name != ''">
+                AND s.name LIKE CONCAT('%', #{name}, '%')
+            </if>
+            <if test="degree != null">
+                AND s.degree = #{degree}
+            </if>
+            <if test="clazzId != null">
+                AND s.clazz_id = #{clazzId}
+            </if>
+        </where>
+        ORDER BY s.update_time DESC
+    </select>
 </mapper>
