@@ -23,4 +23,10 @@ public interface StudentMapper {
             "(name, no, gender, phone, id_card, is_college, address, degree, graduation_date, clazz_id, create_time, update_time) values " +
             "(#{name}, #{no}, #{gender}, #{phone}, #{idCard}, #{isCollege}, #{address}, #{degree}, #{graduationDate}, #{clazzId}, #{createTime}, #{updateTime})")
     void add(Student student);
+
+    @Select("select s.*, c.name as clazz_name " +
+            "from student s " +
+            "         left join clazz c on s.clazz_id = c.id " +
+            "where s.id = #{id}")
+    Student selectById(int id);
 }

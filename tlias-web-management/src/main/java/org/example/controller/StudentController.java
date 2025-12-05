@@ -36,4 +36,11 @@ public class StudentController {
          studentService.add(student);
         return Result.success();
     }
+
+    @GetMapping("/{id}")
+    public Result selectById(@PathVariable int id){
+        log.info("根据id查询学生信息: {}", id);
+         Student student = studentService.selectById(id);
+        return Result.success(student);
+    }
 }
