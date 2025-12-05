@@ -3,6 +3,7 @@ package org.example.mapper;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
 import org.example.pojo.Student;
 import org.example.pojo.StudentQueryParam;
 
@@ -29,4 +30,19 @@ public interface StudentMapper {
             "         left join clazz c on s.clazz_id = c.id " +
             "where s.id = #{id}")
     Student selectById(int id);
+
+    @Update("update student set " +
+            "name = #{name}, " +
+            "no = #{no}, " +
+            "gender = #{gender}, " +
+            "phone = #{phone}, " +
+            "degree = #{degree}, " +
+            "id_card = #{idCard}, " +
+            "is_college = #{isCollege}, " +
+            "address = #{address}, " +
+            "graduation_date = #{graduationDate}, " +
+            "clazz_id = #{clazzId}, " +
+            "update_time = #{updateTime} " +
+            "where id = #{id}")
+    void update(Student student);
 }

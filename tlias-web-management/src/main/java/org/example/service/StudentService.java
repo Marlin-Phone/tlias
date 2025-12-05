@@ -15,4 +15,6 @@ public interface StudentService {
     void add(Student student);
 
     Student selectById(int id);
+
+    void update(Student student);
 }
