@@ -34,4 +34,13 @@ public class ReportController {
         List<Map<String, Object>> genderList =  reportService.getEmpGenderData();
         return Result.success(genderList);
     }
+
+    // 统计学员学历
+    @GetMapping("/studentDegreeData")
+    public Result getStudentDegreeData() {
+        log.info("获取学员学历数据报表");
+        List<Map<String, Object>> degreeList =  reportService.getStudentDegreeData();
+        return Result.success(degreeList);
+    }
+
 }
