@@ -2,6 +2,7 @@ package org.example.service.impl;
 
 import org.example.mapper.EmpMapper;
 import org.example.mapper.StudentMapper;
+import org.example.pojo.ClazzOption;
 import org.example.pojo.JobOption;
 import org.example.service.ReportService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,5 +39,17 @@ public class ReportServiceImpl implements ReportService {
     @Override
     public List<Map<String, Object>> getStudentDegreeData() {
         return studentMapper.countStudentDegreeData();
+    }
+
+    @Override
+    public ClazzOption getClazzData() {
+        // 1. 调用Mapper层方法获取数据
+        List<Map<String, Object>> list = studentMapper.countStudentData();
+
+        // 2. 组装结果并返回
+        List<Object> clazzList = list.stream().map(dataMap -> dataMap.get("clazzList")).toList();
+        List<Object> dataList = list.stream().map(dataMap -> dataMap.get("dataList")).toList();
+
+        return new ClazzOption(clazzList, dataList);
     }
 }

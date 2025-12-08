@@ -49,4 +49,7 @@ public interface StudentMapper {
 
     @MapKey("name")
     List<Map<String, Object>> countStudentDegreeData();
+
+    @MapKey("clazzList")
+    List<Map<String, Object>> countStudentData();
 }

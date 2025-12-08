@@ -41,4 +41,10 @@
             count(*) as value
         from student group by degree order by degree desc;
     </select>
+    <select id="countStudentData" resultType="java.util.Map">
+        select clazz.name as clazzList, count(*) as dataList
+        from student
+            left join clazz on student.clazz_id = clazz.id
+        group by clazz_id order by dataList
+    </select>
 </mapper>

@@ -1,6 +1,7 @@
 package org.example.controller;
 
 import lombok.extern.slf4j.Slf4j;
+import org.example.pojo.ClazzOption;
 import org.example.pojo.JobOption;
 import org.example.pojo.Result;
 import org.example.service.ReportService;
@@ -43,4 +44,11 @@ public class ReportController {
         return Result.success(degreeList);
     }
 
+    // 统计班级人数
+    @GetMapping("/studentCountData")
+    public Result getStudentCountData() {
+        log.info("获取班级人数数据报表");
+        ClazzOption clazzOptionList = reportService.getClazzData();
+        return Result.success(clazzOptionList);
+    }
 }
