@@ -1,10 +1,7 @@
 package org.example.controller;
 
 import lombok.extern.slf4j.Slf4j;
-import org.example.pojo.Emp;
-import org.example.pojo.EmpQueryParam;
-import org.example.pojo.PageResult;
-import org.example.pojo.Result;
+import org.example.pojo.*;
 import org.example.service.EmpService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -63,5 +60,13 @@ public class EmpController {
         log.info("查询所有员工信息");
         List<Emp> empList = empService.listAll();
         return Result.success(empList);
+    }
+
+    // 修改员工密码
+    @PutMapping("/password")
+    public Result updatePassword(@RequestBody EmpPassword empPassword){
+        log.info("修改员工密码: {}", empPassword);
+        empService.updatePassword(empPassword);
+        return Result.success();
     }
 }

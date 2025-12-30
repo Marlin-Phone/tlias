@@ -144,4 +144,23 @@ public class EmpServiceImpl implements EmpService {
             return null;
         }
     }
+
+    @Override
+    public void updatePassword(EmpPassword empPassword){
+        // 1. 通过id查询员工信息（oldPassword）
+        Integer id = empPassword.getId();
+        Emp emp = empMapper.getById(id);
+        // 2. 比对emp.password的密码与oldPassword是否一致
+        String OldPassword = emp.getPassword();
+        String NewPassword = empPassword.getNewPassword();
+        if(!OldPassword.equals(empPassword.getOldPassword())){
+            throw new RuntimeException("旧密码不正确，修改密码失败");
+        }
+        // 3. 更新password - use no-arg constructor + setters to avoid parameter-order mistakes
+        Emp toUpdate = new Emp();
+        toUpdate.setId(id);
+        toUpdate.setPassword(empPassword.getNewPassword());
+        toUpdate.setUpdateTime(LocalDateTime.now());
+        empMapper.update(toUpdate);
+    }
 }

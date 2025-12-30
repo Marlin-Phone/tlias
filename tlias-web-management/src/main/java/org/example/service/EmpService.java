@@ -1,9 +1,6 @@
 package org.example.service;
 
-import org.example.pojo.Emp;
-import org.example.pojo.EmpQueryParam;
-import org.example.pojo.LoginInfo;
-import org.example.pojo.PageResult;
+import org.example.pojo.*;
 
 import java.util.List;
 
@@ -27,4 +24,6 @@ public interface EmpService {
     List<Emp> listAll();
 
     LoginInfo login(Emp emp);
+
+    void updatePassword(EmpPassword empPassword);
 }
