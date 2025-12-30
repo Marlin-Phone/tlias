@@ -1,6 +1,7 @@
 package org.example.controller;
 
 import lombok.extern.slf4j.Slf4j;
+import org.example.anno.LogOperation;
 import org.example.pojo.*;
 import org.example.service.ClazzService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +24,7 @@ public class ClazzController {
         return Result.success(clazzPageResult);
     }
 
+    @LogOperation
     @DeleteMapping("/{id}")
     public Result delete(@PathVariable int id){
         log.info("删除班级信息: {}", id);
@@ -30,6 +32,7 @@ public class ClazzController {
         return Result.success();
     }
 
+    @LogOperation
     @PostMapping
     public Result add(@RequestBody Clazz clazz){
         log.info("新增班级信息");
@@ -44,6 +47,7 @@ public class ClazzController {
         return Result.success(clazz);
     }
 
+    @LogOperation
     @PutMapping
     public Result update(@RequestBody Clazz clazz){
         log.info("修改班级信息: {}", clazz);

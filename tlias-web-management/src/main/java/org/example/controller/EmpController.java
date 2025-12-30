@@ -1,6 +1,7 @@
 package org.example.controller;
 
 import lombok.extern.slf4j.Slf4j;
+import org.example.anno.LogOperation;
 import org.example.pojo.*;
 import org.example.service.EmpService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +24,7 @@ public class EmpController {
         return Result.success(pageResult);
     }
 
+    @LogOperation
     @PostMapping
     public Result save(@RequestBody Emp emp){
         log.info("新增员工信息: {}", emp);
@@ -31,6 +33,7 @@ public class EmpController {
     }
 
 //    删除多个员工信息
+    @LogOperation
     @DeleteMapping
     public Result delete(@RequestParam List<Integer> ids){
         log.info("删除员工信息: {}", ids);
@@ -47,6 +50,7 @@ public class EmpController {
     }
 
 //    修改员工信息
+    @LogOperation
     @PutMapping
     public Result update(@RequestBody Emp emp){
         log.info("修改员工信息: {}", emp);

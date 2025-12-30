@@ -1,6 +1,7 @@
 package org.example.controller;
 
 import lombok.extern.slf4j.Slf4j;
+import org.example.anno.LogOperation;
 import org.example.pojo.*;
 import org.example.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +24,7 @@ public class StudentController {
         return Result.success(studentPageResult);
     }
 
+    @LogOperation
     @DeleteMapping("/{ids}")
     public Result delete(@PathVariable List<Integer> ids){
         log.info("删除学生信息: {}", ids);
@@ -30,6 +32,7 @@ public class StudentController {
         return Result.success();
     }
 
+    @LogOperation
     @PostMapping
     public Result add(@RequestBody Student student){
         log.info("新增学生信息{}", student);
@@ -44,6 +47,7 @@ public class StudentController {
         return Result.success(student);
     }
 
+    @LogOperation
     @PutMapping
     public Result update(@RequestBody Student student){
         log.info("修改学生信息: {}", student);
@@ -51,6 +55,7 @@ public class StudentController {
         return Result.success();
     }
 
+    @LogOperation
     @PutMapping("/violation/{id}/{score}")
     public Result updateScore(@PathVariable int id, @PathVariable int score){
         log.info("学生违纪扣分: id={}, score={}", id, score);
