@@ -22,6 +22,14 @@ public class GlobalExceptionHandler {
         return Result.error(arr[2] + "已存在，请更换后重试！");
     }
 
+    // 运行时异常处理
+    @ExceptionHandler(RuntimeException.class)
+    public Result handleRuntimeException(RuntimeException e) {
+        log.error("运行时异常: ", e);
+        // 返回具体的异常信息
+        return Result.error(e.getMessage());
+    }
+
     // 兜底的全局异常处理
     @ExceptionHandler(Exception.class)
     public Result handleException(Exception e) {
