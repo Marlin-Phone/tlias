@@ -1,13 +1,19 @@
 package org.example.aop;
 
+import io.jsonwebtoken.Claims;
+import jakarta.servlet.http.HttpServletRequest;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.example.anno.LogOperation;
 import org.example.mapper.OperateLogMapper;
 import org.example.pojo.OperateLog;
+import org.example.utils.JwtUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.web.context.request.RequestContextHolder;
+import org.springframework.web.context.request.ServletRequestAttributes;
+
 import java.time.LocalDateTime;
 import java.util.Arrays;
 
@@ -44,10 +50,27 @@ public class OperationLogAspect {
         operateLogMapper.insert(operateLog);
         return result;
     }
-    
-    // 示例方法，获取当前用户ID
+
+    private String getJwtFromHeader(){
+        ServletRequestAttributes attributes = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
+        if(attributes == null){
+            return null;
+        }
+        HttpServletRequest request = attributes.getRequest();
+        String token = request.getHeader("token");
+        return token;
+    }
+
     private int getCurrentUserId() {
-        // 这里应该根据实际情况从认证信息中获取当前登录用户的ID
-        return 1; // 示例返回值
+        String token = getJwtFromHeader();
+        if (token == null) {
+            return -1; // 或抛出异常，视业务需求
+        }
+        Claims jwt = JwtUtils.parseToken(token);
+        Object idObj = jwt.get("id");
+        if (idObj == null) {
+            return -1; // 或抛出异常
+        }
+        return Integer.parseInt(idObj.toString());
     }
 }
