@@ -9,6 +9,7 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @AllArgsConstructor
 public class OperateLog {
+    private String operateEmpName; //操作人名称
     private Integer id; //ID
     private Integer operateEmpId; //操作人ID
     private LocalDateTime operateTime; //操作时间

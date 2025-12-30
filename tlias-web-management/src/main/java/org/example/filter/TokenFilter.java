@@ -5,6 +5,7 @@ import jakarta.servlet.annotation.WebFilter;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.extern.slf4j.Slf4j;
+import org.example.utils.CurrentHolder;
 import org.example.utils.JwtUtils;
 
 import java.io.IOException;
@@ -44,5 +45,7 @@ public class TokenFilter implements Filter {
             log.info("Token校验成功，放行");
             filterChain.doFilter(request,response);
         }
+        //7. 清空当前线程绑定的id
+        CurrentHolder.remove();
     }
 }
