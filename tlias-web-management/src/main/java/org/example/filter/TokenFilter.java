@@ -29,10 +29,15 @@ public class TokenFilter implements Filter {
             return;
         }
         // 3. 获取请求头中的Token
+        // 3.1 如果是预检请求，直接放行
+        if ("OPTIONS".equalsIgnoreCase(request.getMethod())) {
+            filterChain.doFilter(request, response);
+            return;
+        }
         String token = request.getHeader("token");
         // 4. 判断Token是否存在，如果不存在，说明用户没有登录，返回错误信息（401响应码）
         if(token == null || token.isEmpty()){
-            log.info("Token不存在，响应401");
+            log.info("Token不存在，响应401，URI: {}，Method: {}", requestURI, request.getMethod());
             response.setStatus(HttpServletResponse.SC_UNAUTHORIZED); // 401
             return;
         }
