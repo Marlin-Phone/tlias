@@ -26,6 +26,6 @@ public class LogServiceImpl implements LogService {
         List<OperateLog> logList = operateLogMapper.list(logQueryParam);
         //3.解析查询结果，并封装
         Page<OperateLog> page = (Page<OperateLog>) logList;
-        return new PageResult<OperateLog>(page.getPages(),page.getResult());
+        return new PageResult<OperateLog>(page.getTotal(),page.getResult());
     }
 }
