@@ -6,6 +6,6 @@
 
 
     <select id="list" resultType="org.example.pojo.OperateLog">
-        select e.name as operateEmpName,ol.* from operate_log ol,emp e where ol.operate_emp_id = e.id
+        select e.name as operateEmpName,ol.* from operate_log ol,emp e where ol.operate_emp_id = e.id order by ol.operate_time desc
     </select>
 </mapper>
