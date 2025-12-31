@@ -41,18 +41,8 @@ const queryPage = async (pageArg, pageSizeArg) => {
 
     if (result.code) {
       tableData.value = result.data.rows
-
-      // 修正 total 值：如果后端返回的是页数，就乘以 pageSize
-      let backendTotal = result.data.total
-      let actualDataCount = tableData.value.length
-
-      // 判断逻辑：如果后端返回的total很小，但实际数据量很大，说明需要修正
-      if (backendTotal < actualDataCount && actualDataCount > 0) {
-        pagination.value.total = backendTotal * size
-      } else {
-        pagination.value.total = backendTotal
-      }
-
+      // 直接使用后端返回的总条数
+      pagination.value.total = result.data.total
       lastQuery.value = { page, pageSize: size }
     }
   } finally {
