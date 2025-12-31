@@ -22,7 +22,6 @@ const emps = ref([])
 //钩子函数 - 页面加载时触发
 onMounted(() => {
   search() //查询班级列表数据
-  queryAllEmps() //查询员工列表数据
 })
 
 //加载所有的员工数据
@@ -120,9 +119,12 @@ const clearClazz = () => {
 
 //新增班级
 const addClazz = () => {
+  // 在打开新增弹窗时再拉取员工列表，避免页面加载时多余请求
   dialogVisible.value = true
   dialogTitle.value = '新增班级'
   clearClazz()
+
+  queryAllEmps()
 
   //重置表单的校验规则-提示信息
   if (clazzFormRef.value) {
@@ -132,6 +134,8 @@ const addClazz = () => {
 
 //修改班级
 const edit = async (id) => {
+  // 在打开编辑弹窗前确保员工列表已加载
+  await queryAllEmps()
   const result = await queryByIdApi(id)
   if (result.code) {
     dialogVisible.value = true
@@ -258,14 +262,10 @@ const deleteById = async (id) => {
         <template #default="scope">
           <el-space direction="vertical" alignment="center" :size="8">
             <el-button type="primary" @click="edit(scope.row.id)"
-              ><el-icon>
-                <Edit /> </el-icon
-              >编辑</el-button
+              ><el-icon> <Edit /> </el-icon>编辑</el-button
             >
             <el-button type="danger" @click="deleteById(scope.row.id)"
-              ><el-icon>
-                <Delete /> </el-icon
-              >删除</el-button
+              ><el-icon> <Delete /> </el-icon>删除</el-button
             >
           </el-space>
         </template>
