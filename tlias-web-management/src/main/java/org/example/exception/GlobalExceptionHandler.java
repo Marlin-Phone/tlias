@@ -22,6 +22,13 @@ public class GlobalExceptionHandler {
         return Result.error(arr[2] + "已存在，请更换后重试！");
     }
 
+    // 处理部门有员工时删除部门的异常
+    @ExceptionHandler(DeptHasEmployeesException.class)
+    public Result handleDeptHasEmployeesException(DeptHasEmployeesException e) {
+        log.error("删除部门失败: {}", e.getMessage());
+        return Result.error(e.getMessage());
+    }
+
     // 运行时异常处理
     @ExceptionHandler(RuntimeException.class)
     public Result handleRuntimeException(RuntimeException e) {
