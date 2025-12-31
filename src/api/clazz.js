@@ -6,9 +6,8 @@ export const queryAllClazzApi = () => request.get("/clazzs/list");
 
 //班级列表查询
 export const queryPageApi = (name, begin, end, page, pageSize) => {
-    return request.get(
-        `/clazzs?name=${name}&begin=${begin}&end=${end}&page=${page}&pageSize=${pageSize}`
-    );
+    const url = `/clazzs?name=${encodeURIComponent(name)}&begin=${encodeURIComponent(begin)}&end=${encodeURIComponent(end)}&page=${page}&pageSize=${pageSize}`;
+    return request.get(url);
 };
 
 //新增
