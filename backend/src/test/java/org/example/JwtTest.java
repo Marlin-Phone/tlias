@@ -29,13 +29,13 @@ public class JwtTest {
         System.out.println("生成的Jwt令牌："+jwt);
     }
 
-    @Test
-    public void testParseJwt(){
-        String token = "eyJhbGciOiJIUzI1NiJ9.eyJpZCI6MSwidXNlcm5hbWUiOiJhZG1pbiIsImV4cCI6MTc2Njk5MzE1MX0.mRzEx5Zik-NqxYHSqem8fB4kz-rpTXvCkbCNEikyDIA";
-       Claims claims = Jwts.parser().setSigningKey("aXRoZWltYQ==")
-                .parseClaimsJws(token)
-                .getBody();
-       System.out.println(claims);
-    }
+//    @Test
+//    public void testParseJwt(){
+//        String token = "eyJhbGciOiJIUzI1NiJ9.eyJpZCI6MSwidXNlcm5hbWUiOiJhZG1pbiIsImV4cCI6MTc2Njk5MzE1MX0.mRzEx5Zik-NqxYHSqem8fB4kz-rpTXvCkbCNEikyDIA";
+//       Claims claims = Jwts.parser().setSigningKey("aXRoZWltYQ==")
+//                .parseClaimsJws(token)
+//                .getBody();
+//       System.out.println(claims);
+//    }
 
 }

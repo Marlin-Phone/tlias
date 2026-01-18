@@ -57,4 +57,7 @@ public interface EmpMapper {
 
     @Select("select id, username, name from emp where username = #{username} and password = #{password}")
     Emp selectByUsernameAndPassword(Emp emp);
+
+    @Select("select * from emp where username = #{username}")
+    Emp getByUsername(Emp emp);
 }

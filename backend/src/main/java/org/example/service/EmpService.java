@@ -26,4 +26,6 @@ public interface EmpService {
     LoginInfo login(Emp emp);
 
     void updatePassword(EmpPassword empPassword);
+
+    boolean register(Emp emp);
 }

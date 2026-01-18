@@ -27,6 +27,10 @@ public class TokenFilter implements Filter {
             log.info("登录请求，放行");
             filterChain.doFilter(request,response);
             return;
+        }else if(requestURI.contains("/register")){
+            log.info("注册请求，放行");
+            filterChain.doFilter(request,response);
+            return;
         }
         // 3. 获取请求头中的Token
         // 3.1 如果是预检请求，直接放行

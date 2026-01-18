@@ -147,7 +147,7 @@ public class EmpServiceImpl implements EmpService {
 
     @Override
     public void updatePassword(EmpPassword empPassword){
-        // 1. 通过id查询员工信息（oldPassword）
+        // 1. 通过id查询员工信息（oldPassword@）
         Integer id = empPassword.getId();
         Emp emp = empMapper.getById(id);
         // 2. 比对emp.password的密码与oldPassword是否一致
@@ -162,5 +162,26 @@ public class EmpServiceImpl implements EmpService {
         toUpdate.setPassword(empPassword.getNewPassword());
         toUpdate.setUpdateTime(LocalDateTime.now());
         empMapper.update(toUpdate);
+    }
+
+    @Override
+    public boolean register(Emp emp){
+        // 1. 检查用户名是否已存在
+        Emp existingEmp = empMapper.getByUsername(emp);
+        if(existingEmp != null){
+            // 用户名已存在，注册失败
+            return false;
+        }
+        // 2. 设置默认值
+        emp.setGender(1); // 默认性别为男
+        emp.setName(emp.getUsername());
+        emp.setCreateTime(LocalDateTime.now());
+        emp.setUpdateTime(LocalDateTime.now());
+        if (emp.getPhone() == null) {
+            emp.setPhone("");
+        }
+        // 3. 插入新员工记录
+        empMapper.insert(emp);
+        return true;
     }
 }
