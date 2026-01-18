@@ -10,6 +10,7 @@ import EmpReportView from '@/views/report/emp/index.vue'
 import StuReportView from '@/views/report/stu/index.vue'
 import LayoutView from '@/views/layout/index.vue'
 import LoginView from '@/views/login/index.vue'
+import RegisterView from '@/views/register/index.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -22,7 +23,7 @@ const router = createRouter({
       children: [
         //子路由的 `/` 已经抽取到了父路由中
         { path: 'index', name: 'index', component: IndexView },
-        { path: 'clazz', name: 'clazz', component: ClazzView },  
+        { path: 'clazz', name: 'clazz', component: ClazzView },
         { path: 'stu', name: 'stu', component: StuView },
         { path: 'dept', name: 'dept', component: DeptView },
         { path: 'emp', name: 'emp', component: EmpView },
@@ -30,7 +31,8 @@ const router = createRouter({
         { path: 'empReport', name: 'empReport', component: EmpReportView },
         { path: 'stuReport', name: 'stuReport', component: StuReportView }]
     },
-    { path: '/login', name: 'login', component: LoginView }
+    { path: '/login', name: 'login', component: LoginView },
+    { path: '/register', name: 'register', component: RegisterView }
   ]
 })
 
