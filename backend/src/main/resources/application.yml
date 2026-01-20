@@ -1,8 +1,9 @@
-# 配置数据库的连接信息
+# @format
+
 spring:
   application:
     name: tlias-web-management
-#数据库的连接信息
+  # 数据库的连接信息
   datasource:
     url: jdbc:mysql://localhost:3306/tlias
     driver-class-name: com.mysql.cj.jdbc.Driver
@@ -14,7 +15,7 @@ spring:
       max-file-size: 10MB
       #最大请求大小（包括所有文件和表单数据）
       max-request-size: 100MB
-#Mybatis的相关配置
+# Mybatis的相关配置
 mybatis:
   configuration:
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
@@ -24,6 +25,7 @@ logging:
   level:
     org.springframework.jdbc.support.JdbcTransactionManager: DEBUG
 
+# 阿里云OSS的配置
 aliyun:
   oss:
     endpoint: https://oss-cn-beijing.aliyuncs.com
