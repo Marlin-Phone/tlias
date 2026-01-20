@@ -9,14 +9,14 @@
   </p>
 
   <!-- 你的徽章部分 -->
-  <!-- 需要将以下所有的 Template-Repository 修改为 当前仓库 名称-->
+  <!-- 需要将以下所有的 tlias 修改为 当前仓库 名称-->
   <p align="center">
-    <img src="https://img.shields.io/github/repo-size/marlin-phone/Template-Repository?logo=github" alt="repo size"/>
-    <img src="https://img.shields.io/github/last-commit/marlin-phone/Template-Repository?logo=github&color=success" alt="last commit"/>
-    <img src="https://img.shields.io/github/commit-activity/w/marlin-phone/Template-Repository" alt="commit activity"/>
-    <img src="https://visitor-badge.laobi.icu/badge?page_id=marlin-phone.Template-Repository" alt="visitors"/> 
-    <img src="https://img.shields.io/github/languages/top/marlin-phone/Template-Repository?logo=c%2B%2B&logoColor=white" alt="top language"/>
-    <img src="https://img.shields.io/github/license/marlin-phone/Template-Repository" alt="license"/>
+    <img src="https://img.shields.io/github/repo-size/marlin-phone/tlias?logo=github" alt="repo size"/>
+    <img src="https://img.shields.io/github/last-commit/marlin-phone/tlias?logo=github&color=success" alt="last commit"/>
+    <img src="https://img.shields.io/github/commit-activity/w/marlin-phone/tlias" alt="commit activity"/>
+    <img src="https://visitor-badge.laobi.icu/badge?page_id=marlin-phone.tlias" alt="visitors"/> 
+    <img src="https://img.shields.io/github/languages/top/marlin-phone/tlias?logo=c%2B%2B&logoColor=white" alt="top language"/>
+    <img src="https://img.shields.io/github/license/marlin-phone/tlias" alt="license"/>
   </p>
 
   <!-- 链接导航 -->
