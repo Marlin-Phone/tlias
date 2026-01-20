@@ -1,6 +1,6 @@
 <div align="center">
   <!-- 替换为你的 Logo，如果没有可以删除或使用 Emoji -->
-  <img src="./image/myfavicon.ico" alt="Logo" width="100" height="100">
+  <img src="./image/myfavicon.png" alt="Logo" width="100" height="100">
 
   <h1 align="center">tlias 智能学习辅助系统</h1>
 
